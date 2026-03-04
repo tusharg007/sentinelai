@@ -1,5 +1,6 @@
 <div align="center">
 
+[![Live Demo](https://img.shields.io/badge/🚀_LIVE_DEMO-Try_Now-ff4b4b?style=for-the-badge&logo=streamlit)](https://sentinelai-mzpttdbvspkloq6hd8hhuj.streamlit.app/)
 # 🛡️ SentinelAI
 ### AI Battlefield Intelligence Platform
 
