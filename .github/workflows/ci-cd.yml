@@ -54,6 +54,7 @@ jobs:
         env:
           ENABLE_MODELS: "[]"
           ENV: "test"
+          PYTHONPATH: "."
         run: |
           pytest tests/ -v --tb=short -x
 
