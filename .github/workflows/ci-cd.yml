@@ -43,11 +43,11 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements.txt
 
-      - name: Install CPU-only torch + project deps
+      - name: Install CPU-only torch + test deps
         working-directory: backend
         run: |
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-          pip install -r requirements.txt
+          pip install -r requirements-test.txt
 
       - name: Run pytest
         working-directory: backend

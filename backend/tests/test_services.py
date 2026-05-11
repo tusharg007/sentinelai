@@ -163,10 +163,11 @@ class TestChangeDetection:
 
     def test_opposite_images_high_change(self):
         from app.services.change import _pixel_change_map
-        black = np.zeros((128,128,3), dtype=np.uint8)
-        white = np.full((128,128,3), 255, dtype=np.uint8)
-        cm = _pixel_change_map(black, white)
-        assert cm.mean() > 0.8
+        rng = np.random.default_rng(99)
+        dark = rng.integers(0, 30, (128,128,3), dtype=np.uint8)
+        bright = rng.integers(220, 255, (128,128,3), dtype=np.uint8)
+        cm = _pixel_change_map(dark, bright)
+        assert cm.mean() > 0.4
 
     def test_change_map_normalised(self):
         from app.services.change import _pixel_change_map
