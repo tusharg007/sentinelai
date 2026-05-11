@@ -1,22 +1,16 @@
-# ── Test-only dependencies (no GDAL/rasterio/heavy geo libs) ──
+# ── Minimal test dependencies (CI-safe, no C library deps) ──
 numpy>=1.26.0
 opencv-python-headless>=4.9.0
 Pillow>=10.1.0
 scipy>=1.12.0
 
-# Config
+# Config chain
 pydantic>=2.5.0
 pydantic-settings>=2.1.0
 python-dotenv>=1.0.1
 
-# Geo (pure-python only)
-pyproj>=3.6.1
-shapely>=2.0.3
-geojson>=3.1.0
-
-# API (needed for config import chain)
+# API (needed for config import)
 fastapi>=0.109.0
-uvicorn>=0.27.0
 loguru>=0.7.2
 
 # Testing

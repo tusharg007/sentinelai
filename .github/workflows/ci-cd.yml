@@ -41,7 +41,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
-          cache-dependency-path: backend/requirements.txt
+          cache-dependency-path: backend/requirements-test.txt
 
       - name: Install CPU-only torch + test deps
         working-directory: backend
@@ -55,8 +55,7 @@ jobs:
           ENABLE_MODELS: "[]"
           ENV: "test"
         run: |
-          pytest tests/ -v --tb=short -x \
-            --cov=app --cov-report=xml --cov-report=term-missing
+          pytest tests/ -v --tb=short -x
 
       - name: Upload coverage
         uses: codecov/codecov-action@v4
