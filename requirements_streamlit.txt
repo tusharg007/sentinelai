@@ -1,0 +1,8 @@
+streamlit>=1.32.0
+torch
+torchvision
+ultralytics
+transformers
+opencv-python-headless
+Pillow
+numpy

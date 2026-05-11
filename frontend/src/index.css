@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;600&family=Share+Tech+Mono&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #020507; --surface: #060d14; --card: #080f18;
+  --border: #0e2233; --accent: #00ff88; --accent-dim: #00aa55;
+  --warn: #ff6b00; --danger: #ff1a1a; --info: #00b4ff;
+  --gold: #ffd700; --muted: #3a6080; --text: #c8dde8; --text-dim: #4a7090;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; background: var(--bg); color: var(--text); font-family: 'IBM Plex Mono', monospace; overflow-x: hidden; }
+
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(0,255,136,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.025) 1px, transparent 1px);
+  background-size: 32px 32px; pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ''; position: fixed; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
+  pointer-events: none; z-index: 0;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+::selection { background: rgba(0,255,136,0.18); color: var(--accent); }
+
+.tac-card { background: rgba(6,13,20,0.75); border: 1px solid var(--border); border-radius: 3px; transition: border-color 0.15s; }
+.tac-card:hover { border-color: rgba(0,170,85,0.35); }
+
+.tac-input { width: 100%; background: rgba(0,0,0,0.45); border: 1px solid var(--border); border-radius: 3px; padding: 8px 12px; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; transition: border-color 0.15s; outline: none; }
+.tac-input:focus { border-color: var(--accent-dim); }
+
+.tac-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; background: transparent; border: 1px solid var(--accent); border-radius: 3px; color: var(--accent); font-family: 'Orbitron', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.15s; }
+.tac-btn:hover:not(:disabled) { background: rgba(0,255,136,0.06); box-shadow: 0 0 18px rgba(0,255,136,0.12); }
+.tac-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.tac-btn.running { border-color: var(--warn); color: var(--warn); animation: pulseWarn 1s ease infinite; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 2px; font-family: 'Orbitron', monospace; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.badge-critical { background: rgba(255,26,26,0.12);  border: 1px solid #ff1a1a; color: #ff1a1a; }
+.badge-high     { background: rgba(255,107,0,0.12);  border: 1px solid #ff6b00; color: #ff6b00; }
+.badge-medium   { background: rgba(255,215,0,0.10);  border: 1px solid #ffd700; color: #ffd700; }
+.badge-low      { background: rgba(0,255,136,0.07);  border: 1px solid #00aa55; color: #00ff88; }
+
+.section-header::before { content: ''; display: inline-block; width: 2px; height: 11px; background: var(--accent); box-shadow: 0 0 6px var(--accent); margin-right: 8px; vertical-align: middle; }
+
+@keyframes radar-spin { to { transform: rotate(360deg); } }
+.radar-sweep { animation: radar-spin 3s linear infinite; }
+@keyframes pulseWarn { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+.skeleton { background: linear-gradient(90deg, #0e2233 25%, #112840 50%, #0e2233 75%); background-size: 400px 100%; animation: shimmer 1.4s infinite; border-radius: 3px; }
